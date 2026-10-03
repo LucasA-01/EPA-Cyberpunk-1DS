@@ -12,22 +12,24 @@
 (c) 2077 Arasaka Corporation. Todos os direitos reservados.</p>
     </header>
 
-
-    <main id="terminal">
     <!-- Menu de Opções -->
-    <nav id="menu-principal">
-        <ul>
-            <li class="opcao">[F] Desistir</li>
-        </ul>
-    </nav>
+    <div id="menu-principal">
+            <ul class="ler-mais">Siga as instruções:
+                <li>A cada parte você terá que inserir alguma opção fornecida pelo sistema.</li>
+                <li>Pressione enter para continuar quando não for necessário digitar</li>
+                <li>Se 2 comandos não aceitos forem inseridos consecutivamente o sistema entenderá que você não quer mais participar ou está perdendo tempo propositalmente.(O jogo vai fechar)</li>
+                <p>Para prosseguir pressione enter...</p>
+            </ul>
+    </div>
 
     <!-- Formulário de Comando -->
-    <output class="resposta" for="comando">
-    </output>
-
     <section class="jogo">
         
     </section>
+
+    <output class="resposta" for="comando">
+    </output>
+
 
     <form id="console-input">
         <label class="input" for="comando"><span>C:\Users\Anonymous&gt;</span><div class="apagar"><input class="comando" name="comando" autofocus autocomplete="off"></div></label>
