@@ -417,7 +417,7 @@ comando.addEventListener("keydown", (event) => {
             }
             break;
           case 27:
-            tela.innerHTML = `<p>O programa é progetado da mente da Yara para a tela do seu computador:</p>
+            tela.innerHTML = `<p>O programa é projetado da mente da Yara para a tela do seu computador:</p>
             <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif">`
             etapa = "fim"
             break;
