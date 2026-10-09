@@ -42,7 +42,7 @@ function mostrarProximaTela() {
     switch (etapa) {
       case 28:
         tela.innerHTML = `
-          <p>Você atravessa a cidade até o hospital clandestino. A chuva risca o para-brisa enquanto Yara luta para continuar respirando.</p>
+          <p>Você atravessa a cidade até o hospital clandestino. A chuva risca o para-brisa enquanto A mulher luta para continuar respirando.</p>
           <img src="../ASSETS/IMG/2 - Recepção.png" alt="Entrada do hospital clandestino">
           <p>Pressione Enter para avançar.</p>
         `;
@@ -52,7 +52,7 @@ function mostrarProximaTela() {
       case 29:
         tela.innerHTML = `
           <p>A equipe a coloca na maca e liga os monitores. Um dos médicos encontra atividade neural, mas ela está fraca.</p>
-          <img src="../ASSETS/IMG/3- Mulher na maca.png" alt="Yara sobre uma maca">
+          <img src="../ASSETS/IMG/3- Mulher na maca.png" alt="A mulher sobre uma maca">
           <p>Pressione Enter para avançar.</p>
         `;
         etapa = 30;
@@ -61,7 +61,7 @@ function mostrarProximaTela() {
       case 30:
         tela.innerHTML = `
           <p>O tratamento começa. Luzes percorrem o implante e os sinais vitais se estabilizam, um pulso de cada vez.</p>
-          <img src="../ASSETS/IMG/3- Mulher na maca.png" alt="Yara recebendo tratamento">
+          <img src="../ASSETS/IMG/3- Mulher na maca.png" alt="A mulher recebendo tratamento">
           <p>Pressione Enter para avançar.</p>
         `;
         etapa = 31;
@@ -69,8 +69,8 @@ function mostrarProximaTela() {
 
       case 31:
         tela.innerHTML = `
-          <p>Ao amanhecer, Yara acorda, vocês deixam o hospital e seguem para sua casa.</p>
-          <img src="../ASSETS/IMG/Fuga Neon de Manha.png" alt="Yara recuperada no hospital">
+          <p>Ao amanhecer, a mulher acorda, vocês deixam o hospital e seguem para sua casa. <br> No caminho ela diz que seu nome é Yara</p>
+          <img src="../ASSETS/IMG/Fuga Neon de Manha.png" alt="A mulher recuperada no hospital">
           <p>Pressione Enter para avançar.</p>
         `;
         etapa = 32;
@@ -78,8 +78,8 @@ function mostrarProximaTela() {
 
       case 32:
         tela.innerHTML = `
-          <p>Em casa, você conecta o chip ao implante na cabeça de Yara. O programa pede a senha externa.</p>
-          <img src="../ASSETS/IMG/Implante Neon no Quarto Cyberpunk.png" alt="Chip conectado ao implante neural de Yara">
+          <p>Em casa, você conecta o chip ao implante na cabeça da Yara. O programa pede a senha externa.</p>
+          <img src="../ASSETS/IMG/Implante Neon no Quarto Cyberpunk.png" alt="Chip conectado ao implante neural de A mulher">
           <p>Digite a senha externa e pressione Enter.</p>
         `;
         hospital = false;
@@ -129,7 +129,7 @@ function mostrarProximaTela() {
       } else {
         tela.innerHTML = `
             <p>Você vai direto ao beco. A mulher está caída no chão. Passos pesados se aproximam pela chuva.</p>
-            <img src="../ASSETS/IMG/1-Mulher Inconsciente no Beco Neon (com as mãos nela).png" alt="Mulher caída no chão do beco">
+            <img src="../ASSETS/IMG/Mulher no chão.png" alt="Mulher caída no chão do beco">
             <p>[1] Esconder-se dos guardas<br>[2] Examinar a mulher</p>
           `;
       }
@@ -138,8 +138,8 @@ function mostrarProximaTela() {
 
     case 8:
       tela.innerHTML = `
-          <p>Você se esconde. Os guardas chegam e começam a examinar a mulher. Um deles procura o chip.</p>
-          <img src="../ASSETS/IMG/Confronto Neon no Beco Chuvoso (1).png" alt="Guardas examinando a mulher caída">
+          <p>Você se esconde. Os guardas chegam e olham a mulher caída.p>
+          <img src="../ASSETS/IMG/Guardas aparecem.png" alt="Guardas encontram a mulher caída">
           <p>[1] Surpreender os guardas e pegar o chip<br>[2] Esperar</p>
         `;
       etapa = 9;
@@ -156,7 +156,7 @@ function mostrarProximaTela() {
 
     case 12:
       tela.innerHTML = `
-          <p>Os guardas encontram o chip e vão embora com ele. A mulher ainda respira.</p>
+          <p>Os guardas encontram o chip . A mulher parece estar viva.</p>
           <img src="../ASSETS/IMG/Guardas pegam o chip da mulher.png" alt="Guarda pegando o chip">
           <p>[1] Surpreendê-los e recuperar o chip<br>[2] Continuar escondido</p>
         `;
@@ -192,17 +192,26 @@ function mostrarProximaTela() {
 
     case 20:
       tela.innerHTML = `
-          <p>Você escapa enquanto os guardas analisam a cópia. O chip verdadeiro continua com você.</p>
+          <p>Você escapa enquanto os guardas analisam a cópia. O chip verdadeiro continua com você. Você corre antes que percebam. O que você faz agora?</p>
           <img src="../ASSETS/IMG/1- Aos Pés do Neon Kabuki.png" alt="Protagonista escapando por Kabuki">
           <p>[1] Ir para casa descobrir as informações do chip<br>[2] Levar a mulher ao hospital</p>
         `;
-      etapa = 21;
+      etapa = 23;
+      break;
+
+    case 21:
+      tela.innerHTML = `
+          <p>Os guardas estavam analisando o chip, você pegou os guardas de surpresa e derrubou eles</p>
+          <img src="../ASSETS/IMG/.png" alt="Protagonista escapando por Kabuki">
+          <p>[1] Roubar o chip e ir para casa descobrir as informações do chip<br>[2] Fugir sem nada</p>
+        `;
+      etapa = 23;
       break;
 
     case 22:
       tela.innerHTML = `
-          <p>Você recupera o chip. Yara ainda está no beco e precisa de ajuda.</p>
-          <img src="../ASSETS/IMG/Mão Cibernética Sob Chuva Neon.png" alt="Mão segurando o chip recuperado">
+          <p>Você recupera o chip. A mulher ainda está no beco e precisa de ajuda.</p>
+          <img src="../ASSETS/IMG/Mulher no chão.png" alt="Mulher no chão">
           <p>[1] Ir para casa descobrir as informações do chip<br>[2] Levar a mulher ao hospital</p>
         `;
       etapa = 23;
@@ -255,7 +264,7 @@ comando.addEventListener("keydown", (event) => {
     if (escolha.toUpperCase() === senhaChip) {
       finalizar(
         "FASE 2 // SINAL LOCALIZADO",
-        "A senha é aceita. O programa revela Night City em 2124, sob arranha-céus submersos. Uma assinatura neural de Yara surge no mapa. Uma voz atravessa o terminal: ‘Se chegou até aqui, o futuro já nos encontrou.’",
+        "A senha é aceita. O programa revela Night City em 2077, sob arranha-céus submersos. Uma assinatura neural de A mulher surge no mapa. Uma voz atravessa o terminal: ‘Se chegou até aqui, o futuro já nos encontrou.’",
         "Infiltração Neon no Corredor 307.png",
       );
     } else {
@@ -355,12 +364,12 @@ comando.addEventListener("keydown", (event) => {
       case 13:
         if (escolha === "1") {
           erros = 0;
-          etapa = 22;
+          etapa = 21;
         } else if (escolha === "2") {
           erros = 0;
           finalizar(
-            "FINAL DE ABANDONO",
-            "Você continua escondido enquanto os guardas levam Yara e o chip. A chuva apaga as pegadas. O beco fica vazio.",
+            "DERROTA // FINAL DE ABANDONO",
+            "Você continua escondido enquanto os guardas levam A mulher e o chip. A chuva apaga as pegadas. O beco fica vazio.",
             "Escondido nas sombras.png",
           );
         } else {
@@ -369,7 +378,6 @@ comando.addEventListener("keydown", (event) => {
         break;
 
       case 15:
-      case 21:
       case 23:
         if (escolha === "1") {
           erros = 0;
@@ -391,8 +399,8 @@ comando.addEventListener("keydown", (event) => {
           } else {
             finalizar(
               "DERROTA // OS GUARDAS VENCERAM",
-              "Você reage, mas sem o mapa e a arma — ou sem um deles — os guardas o derrubam antes da fuga.",
-              "Rendido pelos guardas.png",
+              "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
+              "Fuga Neon sob Chuva e Pixel.png",
             );
           }
         } else if (escolha === "2") {
@@ -419,8 +427,8 @@ comando.addEventListener("keydown", (event) => {
         } else if (escolha === "2") {
           erros = 0;
           finalizar(
-            "FINAL ALTERNATIVO // A NOITE ADIADA",
-            "Você vai dormir. Durante a noite, o chip aquece e projeta uma coordenada no escuro. Um veículo para sob a janela. Ao amanhecer, os arquivos continuam fechados — e alguém já conhece sua localização.",
+            "DERROTA // FINAL ALTERNATIVO // A NOITE ADIADA",
+            "Você vai dormir. Durante a noite, o chip aquece e projeta uma coordenada no escuro. Um veículo para sob a janela. Ao amanhecer, os arquivos continuam fechados e você é preso e morto na cadeia por um dos guardas, você matou o irmão mais novo dele naquela noite... O sistema não é justo.",
             "Esquecer e ir dormir.png",
           );
         } else {
