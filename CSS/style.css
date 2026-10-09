@@ -49,8 +49,54 @@ input {
   flex-direction: column;
 }
 
-.jogo img {
-  width: 30vw;
+.jogo img{
+  width: 45vw;
+}
+
+.terminal {
+  box-sizing: border-box;
+  width: 45vw;
+  height: 32.5vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 18px;
+  background: #05070a;
+  color: #00ff64;
+  font: 13px/20px Consolas, "Courier New", monospace;
+  scrollbar-color: #00ff64 #05070a;
+  scrollbar-width: thin;
+}
+
+.terminal h2 {
+  color: #f1f1f1;
+  font-size: 40px;
+  margin: 15px;
+}
+
+.terminal p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.system { color: #00b4ff; }
+.loc { color: #ffdc00; }
+.alert { color: #ff4141; }
+
+.terminal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: #05070a;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background: #00ff64;
+  border-radius: 4px;
+}
+
+.coment {
+  color: gray;
 }
 
 .tremerS {
@@ -70,27 +116,4 @@ input {
     40% { transform: translate(2px, 1px) rotate(1deg); }
 
     50%, 100%{transform: translate(0, 0) rotate(0deg);}
-}
-
-.digitacao {
-  font-family: monospace; /* Fonte monoespaçada ajuda no alinhamento */
-  white-space: nowrap;    /* Garante que o texto fique em uma única linha */
-  overflow: hidden;       /* Esconde o texto que ainda não foi "digitado" */
-  border-right: 3px solid #000; /* Simula o cursor piscante */
-  
-  /* Largura inicial e as animações */
-  width: 22ch; /* 'ch' é a largura de um caractere. Ajuste para o tamanho do seu texto */
-  animation: 
-    digitar 3s steps(22) infinite alternate,
-    cursor 0.7s step-end infinite;
-}
-
-/* Animação para revelar as letras */
-@keyframes digitar {
-  from { width: 0; }
-}
-
-/* Animação para fazer o cursor piscar */
-@keyframes cursor {
-  50% { border-color: transparent; }
 }

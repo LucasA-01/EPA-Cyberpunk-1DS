@@ -17,10 +17,10 @@ function erroDeOpcao() {
 
   if (erros === 3) {
     tela.innerHTML = `
-      <p>Três opções inválidas. O terminal encerra a sessão.</p>
-      <img src="../ASSETS/IMG/Rendido pelos guardas.png" alt="O protagonista é capturado">
-      <h2>FIM DE JOGO</h2>
-    `;
+            <p>Três opções inválidas. O terminal encerra a sessão.</p>
+            <img src="../ASSETS/IMG/Rendido pelos guardas.png" alt="O protagonista é capturado">
+            <h2>FIM DE JOGO</h2>
+            `;
     comando.disabled = true;
   } else {
     resposta.textContent = `Opção inválida. Tentativa ${erros}/3.`;
@@ -29,10 +29,10 @@ function erroDeOpcao() {
 
 function finalizar(titulo, texto, imagem) {
   tela.innerHTML = `
-    <p>${texto}</p>
-    <img src="../ASSETS/IMG/${imagem}" alt="Imagem do final">
-    <h2>${titulo}</h2>
-  `;
+          <p>${texto}</p>
+          <img src="../ASSETS/IMG/${imagem}" alt="Imagem do final">
+          <h2>${titulo}</h2>
+          `;
   etapa = 99;
   comando.disabled = true;
 }
@@ -42,19 +42,19 @@ function mostrarProximaTela() {
     switch (etapa) {
       case 28:
         tela.innerHTML = `
-          <p>Você atravessa a cidade até o hospital.</p>
-          <img src="../ASSETS/IMG/2 - Recepção.png" alt="Entrada do hospital clandestino">
-          <p>Pressione Enter para avançar.</p>
-        `;
+                <p>Você atravessa a cidade até o hospital.</p>
+                <img src="../ASSETS/IMG/2 - Recepção.png" alt="Entrada do hospital clandestino">
+                <p>Pressione Enter para avançar.</p>
+                `;
         etapa = 29;
         break;
 
       case 29:
         tela.innerHTML = `
-          <p>A equipe a coloca na maca e liga os monitores. Um dos médicos encontra atividade neural, mas ela está fraca.</p>
-          <img src="../ASSETS/IMG/3- Mulher na maca.png" alt="A mulher sobre uma maca">
-          <p>Pressione Enter para avançar.</p>
-        `;
+                  <p>A equipe a coloca na maca e liga os monitores. Um dos médicos encontra atividade neural, mas ela está fraca.</p>
+                  <img src="../ASSETS/IMG/3- Mulher na maca.png" alt="A mulher sobre uma maca">
+                  <p>Pressione Enter para avançar.</p>
+                  `;
         etapa = 30;
         break;
 
@@ -63,25 +63,25 @@ function mostrarProximaTela() {
           <p>O tratamento começa. Luzes percorrem o implante e os sinais vitais se estabilizam, um pulso de cada vez.</p>
           <img src="../ASSETS/IMG/3- Mulher na maca.png" alt="A mulher recebendo tratamento">
           <p>Pressione Enter para avançar.</p>
-        `;
+          `;
         etapa = 31;
         break;
 
       case 31:
         tela.innerHTML = `
-          <p>Ao amanhecer, a mulher acorda, vocês deixam o hospital e seguem para sua casa. <br> No caminho ela diz que seu nome é Yara</p>
-          <img src="../ASSETS/IMG/Fuga Neon de Manha.png" alt="A mulher recuperada no hospital">
-          <p>Pressione Enter para avançar.</p>
-        `;
+            <p>Ao amanhecer, a mulher acorda, vocês deixam o hospital e seguem para sua casa. <br> No caminho ela diz que seu nome é Yara</p>
+            <img src="../ASSETS/IMG/Fuga Neon de Manha.png" alt="A mulher recuperada no hospital">
+            <p>Pressione Enter para avançar.</p>
+            `;
         etapa = 32;
         break;
 
       case 32:
         tela.innerHTML = `
-          <p>Em casa, você conecta o chip ao implante na cabeça da Yara. O programa pede a senha externa.</p>
-          <img src="../ASSETS/IMG/Implante Neon no Quarto Cyberpunk.png" alt="Chip conectado ao implante neural de A mulher">
-          <p>Digite a senha externa e pressione Enter.</p>
-        `;
+              <p>Em casa, você conecta o chip ao implante na cabeça da Yara. O programa pede a senha externa.</p>
+              <img src="../ASSETS/IMG/Implante Neon no Quarto Cyberpunk.png" alt="Chip conectado ao implante neural de A mulher">
+              <p>Digite a senha externa e pressione Enter.</p>
+              `;
         hospital = false;
         etapa = 27;
         break;
@@ -94,28 +94,32 @@ function mostrarProximaTela() {
     case 0:
       popup.innerHTML = "";
       tela.innerHTML = `
-          <p>Um telefone descartável vibra sobre a mesa. Lá fora, o neon de Kabuki sangra na chuva. Uma chamada sem origem pisca no visor.</p>
-          <img src="../ASSETS/IMG/1-Chamado Neon no Escritório Noir.png" alt="Telefone tocando num escritório iluminado por neon">
-          <p>[0] Atender</p>
-        `;
+              <p>Um telefone descartável vibra sobre a mesa. Lá fora, o neon de Kabuki sangra na chuva. Uma chamada sem origem pisca no visor.</p>
+              <img src="../ASSETS/IMG/1-Chamado Neon no Escritório Noir.png" alt="Telefone tocando num escritório iluminado por neon">
+              <p>[0] Atender</p>
+              `;
       etapa = 1;
       break;
 
     case 2:
       tela.innerHTML = `
-          <p>Uma mulher aterrorizada explica que encontrou informações privilegiadas num chip e precisa escapar. Ela marca um beco atrás do Clube Kabuki.</p>
-          <img src="../ASSETS/IMG/2-Chamada Anônima no Clube Kabuki.png" alt="Mulher numa chamada anônima">
-          <p>[1] Ir diretamente ao local<br>[2] Hackear e mapear o local antes de ir</p>
-        `;
+                <p>Uma mulher aterrorizada explica que encontrou informações privilegiadas num chip e precisa escapar. Ela marca um beco atrás do Clube Kabuki.</p>
+                <img src="../ASSETS/IMG/2-Chamada Anônima no Clube Kabuki.png" alt="Mulher numa chamada anônima">
+                <p>[1] Ir diretamente ao local<br>[2] Hackear e mapear o local antes de ir</p>
+                `;
       etapa = 3;
       break;
 
     case 4:
-      tela.innerHTML = `
-          <p>O mapa mostra as patrulhas e um ponto cego. Você decide o que levar.</p>
-          <img src="../ASSETS/IMG/.png" alt="Mapa sendo preparado num computador">
-          <p>[1] Ir preparado<br>[2] Ir sem preparo</p>
-        `;
+      tela.innerHTML = `<p>Você acessou o terminal do seu computador:</p> <br>
+                  <img src="../ASSETS/IMG/GIF/terminal_arasakaos.gif">`;
+                  
+                  setTimeout(() => {
+                    tela.innerHTML = `<p>Você acessou o terminal do seu computador</p>
+                    <img src="../ASSETS/IMG/hack_loc.png">
+                    [1] Ir preparado<br>[2] Ir logo`
+                  }, 15000)
+
       etapa = 5;
       break;
 
@@ -123,13 +127,13 @@ function mostrarProximaTela() {
       if (hackeou) {
         tela.innerHTML = `
             <p>Você chega ao beco mapeado. A mulher está caída no chão. Passos de guardas se aproximam.</p>
-            <img src="../ASSETS/IMG/1-Mulher Inconsciente no Beco Neon (com as mãos nela).png" alt="Mulher caída num beco neon">
+            <img src="../ASSETS/IMG/Mulher no chão.jpg" alt="Mulher caída num beco neon">
             <p>[1] Esconder-se dos guardas<br>[2] Examinar a mulher</p>
           `;
       } else {
         tela.innerHTML = `
             <p>Você vai direto ao beco. A mulher está caída no chão. Passos pesados se aproximam pela chuva.</p>
-            <img src="../ASSETS/IMG/Mulher no chão.png" alt="Mulher caída no chão do beco">
+            <img src="../ASSETS/IMG/Mulher no chão.jpg" alt="Mulher caída no chão do beco">
             <p>[1] Esconder-se dos guardas<br>[2] Examinar a mulher</p>
           `;
       }
@@ -138,7 +142,7 @@ function mostrarProximaTela() {
 
     case 8:
       tela.innerHTML = `
-          <p>Você se esconde. Os guardas chegam e olham a mulher caída.p>
+          <p>Você se esconde. Os guardas chegam e olham a mulher caída.<p>
           <img src="../ASSETS/IMG/Guardas aparecem.png" alt="Guardas encontram a mulher caída">
           <p>[1] Surpreender os guardas e pegar o chip<br>[2] Esperar</p>
         `;
@@ -168,7 +172,7 @@ function mostrarProximaTela() {
           <p>Os guardas acreditaram, eles examinam a mulher, mas não encontram nada.</p>
           <img src="../ASSETS/IMG/2- Passando desapercebido.png" alt="Protagonista passando pelos guardas sem ser visto">
         `;
-      resposta.innerHTML = `Pressione Enter para avançar.`
+      resposta.innerHTML = `Pressione Enter para avançar.`;
       etapa = 15;
       break;
 
@@ -202,7 +206,7 @@ function mostrarProximaTela() {
     case 21:
       tela.innerHTML = `
           <p>Os guardas estavam analisando o chip, você pegou os guardas de surpresa e derrubou eles</p>
-          <img src="../ASSETS/IMG/.png" alt="Protagonista escapando por Kabuki">
+          <img src="../ASSETS/IMG/Tiroteio com Drones.png" alt="Protagonista escapando por Kabuki">
           <p>[1] Roubar o chip e ir para casa descobrir as informações do chip<br>[2] Fugir sem nada</p>
         `;
       etapa = 23;
@@ -337,23 +341,21 @@ comando.addEventListener("keydown", (event) => {
         break;
 
       case 9:
-      if (escolha === "2") {
-        erros = 0;
-        etapa = 12;
-      }
-        else if (escolha === "1") {
+        if (escolha === "2") {
+          erros = 0;
+          etapa = 12;
+        } else if (escolha === "1") {
           erros = 0;
           if (armado) {
             etapa = 22;
-          }
-          else {
+          } else {
             finalizar(
               "DERROTA // OS GUARDAS VENCERAM",
               "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
               "Fuga Neon sob Chuva e Pixel.png",
             );
           }
-      } else {
+        } else {
           erroDeOpcao();
         }
         break;
@@ -371,27 +373,26 @@ comando.addEventListener("keydown", (event) => {
         break;
 
       case 13:
-      if (escolha === "2") {
-        erros = 0;
-        finalizar(
+        if (escolha === "2") {
+          erros = 0;
+          finalizar(
             "DERROTA // FINAL DE ABANDONO",
             "Você continua escondido enquanto os guardas levam A mulher e o chip. A chuva apaga as pegadas. O beco fica vazio.",
             "Escondido nas sombras.png",
-          );
-          if (escolha === "1") {
+          );}
+        else if (escolha === "1" && armado) {
             erros = 0;
-            if (armado) {
-              etapa = 21;
-            }
-            else {
-              finalizar(
-              "DERROTA // OS GUARDAS VENCERAM",
-              "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
-              "Fuga Neon sob Chuva e Pixel.png",
-            );
-            }
+            etapa = 21;
           }
-        } else {
+          else if (escolha === "1"){
+            erros = 0
+              finalizar(
+                "DERROTA // OS GUARDAS VENCERAM",
+                "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
+                "Fuga Neon sob Chuva e Pixel.png",
+              );
+            }
+        else {
           erroDeOpcao();
         }
         break;
@@ -399,7 +400,7 @@ comando.addEventListener("keydown", (event) => {
       case 15:
         tela.innerHTML = `
           <p>Eles foram embora. O chip verdadeiro continua com você.</p>
-          <img src="../ASSETS/IMG/2- Passando desapercebido.png" alt="Protagonista passando pelos guardas sem ser visto">
+          <img src="../ASSETS/IMG/1- Aos Pés do Neon Kabuki.png" alt="Protagonista passando pelos guardas sem ser visto">
           <p>[1] Ir para casa examinar o chip<br>[2] Levar a mulher ao hospital</p>
         `;
         etapa = 23;
