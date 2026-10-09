@@ -71,3 +71,26 @@ input {
 
     50%, 100%{transform: translate(0, 0) rotate(0deg);}
 }
+
+.digitacao {
+  font-family: monospace; /* Fonte monoespaçada ajuda no alinhamento */
+  white-space: nowrap;    /* Garante que o texto fique em uma única linha */
+  overflow: hidden;       /* Esconde o texto que ainda não foi "digitado" */
+  border-right: 3px solid #000; /* Simula o cursor piscante */
+  
+  /* Largura inicial e as animações */
+  width: 22ch; /* 'ch' é a largura de um caractere. Ajuste para o tamanho do seu texto */
+  animation: 
+    digitar 3s steps(22) infinite alternate,
+    cursor 0.7s step-end infinite;
+}
+
+/* Animação para revelar as letras */
+@keyframes digitar {
+  from { width: 0; }
+}
+
+/* Animação para fazer o cursor piscar */
+@keyframes cursor {
+  50% { border-color: transparent; }
+}

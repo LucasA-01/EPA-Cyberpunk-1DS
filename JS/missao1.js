@@ -42,7 +42,7 @@ function mostrarProximaTela() {
     switch (etapa) {
       case 28:
         tela.innerHTML = `
-          <p>Você atravessa a cidade até o hospital clandestino. A chuva risca o para-brisa enquanto A mulher luta para continuar respirando.</p>
+          <p>Você atravessa a cidade até o hospital.</p>
           <img src="../ASSETS/IMG/2 - Recepção.png" alt="Entrada do hospital clandestino">
           <p>Pressione Enter para avançar.</p>
         `;
@@ -113,8 +113,8 @@ function mostrarProximaTela() {
     case 4:
       tela.innerHTML = `
           <p>O mapa mostra as patrulhas e um ponto cego. Você decide o que levar.</p>
-          <img src="../ASSETS/IMG/1-Hackeia chip e loading.png" alt="Mapa sendo preparado num computador">
-          <p>[1] Ir armado<br>[2] Ir desarmado</p>
+          <img src="../ASSETS/IMG/.png" alt="Mapa sendo preparado num computador">
+          <p>[1] Ir preparado<br>[2] Ir sem preparo</p>
         `;
       etapa = 5;
       break;
@@ -165,10 +165,10 @@ function mostrarProximaTela() {
 
     case 14:
       tela.innerHTML = `
-          <p>Você sai sem chamar atenção. Os guardas examinam a mulher, mas não encontram nada. O chip verdadeiro continua com você.</p>
+          <p>Os guardas acreditaram, eles examinam a mulher, mas não encontram nada.</p>
           <img src="../ASSETS/IMG/2- Passando desapercebido.png" alt="Protagonista passando pelos guardas sem ser visto">
-          <p>[1] Ir para casa examinar o chip<br>[2] Levar a mulher ao hospital</p>
         `;
+      resposta.innerHTML = `Pressione Enter para avançar.`
       etapa = 15;
       break;
 
@@ -211,7 +211,7 @@ function mostrarProximaTela() {
     case 22:
       tela.innerHTML = `
           <p>Você recupera o chip. A mulher ainda está no beco e precisa de ajuda.</p>
-          <img src="../ASSETS/IMG/Mulher no chão.png" alt="Mulher no chão">
+          <img src="../ASSETS/IMG/Mulher no chão.jpg" alt="Mulher no chão">
           <p>[1] Ir para casa descobrir as informações do chip<br>[2] Levar a mulher ao hospital</p>
         `;
       etapa = 23;
@@ -303,7 +303,6 @@ comando.addEventListener("keydown", (event) => {
       case 3:
         if (escolha === "1") {
           erros = 0;
-          hackeou = false;
           armado = false;
           etapa = 6;
         } else if (escolha === "2") {
@@ -338,13 +337,23 @@ comando.addEventListener("keydown", (event) => {
         break;
 
       case 9:
-        if (escolha === "1") {
+      if (escolha === "2") {
+        erros = 0;
+        etapa = 12;
+      }
+        else if (escolha === "1") {
           erros = 0;
-          etapa = 22;
-        } else if (escolha === "2") {
-          erros = 0;
-          etapa = 12;
-        } else {
+          if (armado) {
+            etapa = 22;
+          }
+          else {
+            finalizar(
+              "DERROTA // OS GUARDAS VENCERAM",
+              "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
+              "Fuga Neon sob Chuva e Pixel.png",
+            );
+          }
+      } else {
           erroDeOpcao();
         }
         break;
@@ -362,22 +371,39 @@ comando.addEventListener("keydown", (event) => {
         break;
 
       case 13:
-        if (escolha === "1") {
-          erros = 0;
-          etapa = 21;
-        } else if (escolha === "2") {
-          erros = 0;
-          finalizar(
+      if (escolha === "2") {
+        erros = 0;
+        finalizar(
             "DERROTA // FINAL DE ABANDONO",
             "Você continua escondido enquanto os guardas levam A mulher e o chip. A chuva apaga as pegadas. O beco fica vazio.",
             "Escondido nas sombras.png",
           );
+          if (escolha === "1") {
+            erros = 0;
+            if (armado) {
+              etapa = 21;
+            }
+            else {
+              finalizar(
+              "DERROTA // OS GUARDAS VENCERAM",
+              "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
+              "Fuga Neon sob Chuva e Pixel.png",
+            );
+            }
+          }
         } else {
           erroDeOpcao();
         }
         break;
 
       case 15:
+        tela.innerHTML = `
+          <p>Eles foram embora. O chip verdadeiro continua com você.</p>
+          <img src="../ASSETS/IMG/2- Passando desapercebido.png" alt="Protagonista passando pelos guardas sem ser visto">
+          <p>[1] Ir para casa examinar o chip<br>[2] Levar a mulher ao hospital</p>
+        `;
+        etapa = 23;
+        break;
       case 23:
         if (escolha === "1") {
           erros = 0;
@@ -394,7 +420,7 @@ comando.addEventListener("keydown", (event) => {
       case 17:
         if (escolha === "1") {
           erros = 0;
-          if (hackeou && armado) {
+          if (armado) {
             etapa = 22;
           } else {
             finalizar(
