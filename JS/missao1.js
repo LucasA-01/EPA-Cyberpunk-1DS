@@ -11,6 +11,7 @@ let errosSenha = 0;
 let hackeou = false;
 let armado = false;
 let hospital = false;
+let mulher = false;
 
 function erroDeOpcao() {
   erros++;
@@ -78,11 +79,11 @@ function mostrarProximaTela() {
 
       case 32:
         tela.innerHTML = `
-              <p>Em casa, você conecta o chip ao implante na cabeça da Yara. O programa pede a senha externa.</p>
+              <p>Em casa, você conecta o chip ao implante na cabeça da Yara.</p>
               <img src="../ASSETS/IMG/Implante Neon no Quarto Cyberpunk.png" alt="Chip conectado ao implante neural de A mulher">
-              <p>Digite a senha externa e pressione Enter.</p>
               `;
         hospital = false;
+        mulher = true;
         etapa = 27;
         break;
     }
@@ -215,7 +216,7 @@ function mostrarProximaTela() {
     case 22:
       tela.innerHTML = `
           <p>Você recupera o chip. A mulher ainda está no beco e precisa de ajuda.</p>
-          <img src="../ASSETS/IMG/Mulher no chão.jpg" alt="Mulher no chão">
+          <img src="../ASSETS/IMG/Tiroteio com Drones.png" alt="Tiroteio com drones">
           <p>[1] Ir para casa descobrir as informações do chip<br>[2] Levar a mulher ao hospital</p>
         `;
       etapa = 23;
@@ -233,10 +234,12 @@ function mostrarProximaTela() {
     case 26:
       tela.innerHTML = `
           <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
-          <img src="../ASSETS/IMG/INPUT DA SENHA.png" alt="Programa esperando a senha do chip">
-          <p>Digite a senha externa e pressione Enter.</p>
+          <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif" alt="Programa esperando a senha do chip">
+          <input class="senha" name="senha" autofocus autocomplete="off">
         `;
-      etapa = 27;
+        comando.disabled = true
+        mulher = false
+      etapa = "fim";
       break;
   }
 
@@ -264,32 +267,8 @@ comando.addEventListener("keydown", (event) => {
   }
 
   // Senha do chip: duas tentativas erradas encerram o jogo.
-  if (etapa === 27) {
-    if (escolha.toUpperCase() === senhaChip) {
-      finalizar(
-        "FASE 2 // SINAL LOCALIZADO",
-        "A senha é aceita. O programa revela Night City em 2077, sob arranha-céus submersos. Uma assinatura neural de A mulher surge no mapa. Uma voz atravessa o terminal: ‘Se chegou até aqui, o futuro já nos encontrou.’",
-        "Infiltração Neon no Corredor 307.png",
-      );
-    } else {
-      errosSenha++;
-      comando.value = "";
-
-      if (errosSenha === 2) {
-        finalizar(
-          "DERROTA // LOCALIZAÇÃO COMPARTILHADA",
-          "A segunda senha incorreta fecha o programa. Sua localização é enviada à corporação.",
-          "Senha incorreta.png",
-        );
-      } else {
-        resposta.textContent = "Senha incorreta. Você tem mais uma tentativa.";
-      }
-    }
-
-    comando.value = "";
-    return;
-  }
-
+  
+  
   // Mostra uma cena quando a etapa é par; etapas ímpares recebem escolhas.
   if (escolha === "" && etapa % 2 === 0) {
     mostrarProximaTela();
@@ -303,9 +282,9 @@ comando.addEventListener("keydown", (event) => {
           erroDeOpcao();
         }
         break;
-
-      case 3:
-        if (escolha === "1") {
+        
+        case 3:
+          if (escolha === "1") {
           erros = 0;
           armado = false;
           etapa = 6;
@@ -317,18 +296,18 @@ comando.addEventListener("keydown", (event) => {
           erroDeOpcao();
         }
         break;
+        
+        case 5:
+          if (escolha === "1" || escolha === "2") {
+            erros = 0;
+            armado = escolha === "1";
+            etapa = 6;
+          } else {
+            erroDeOpcao();
+          }
+          break;
 
-      case 5:
-        if (escolha === "1" || escolha === "2") {
-          erros = 0;
-          armado = escolha === "1";
-          etapa = 6;
-        } else {
-          erroDeOpcao();
-        }
-        break;
-
-      case 7:
+          case 7:
         if (escolha === "1") {
           erros = 0;
           etapa = 8;
@@ -359,28 +338,28 @@ comando.addEventListener("keydown", (event) => {
           erroDeOpcao();
         }
         break;
-
-      case 11:
-        if (escolha === "1") {
-          erros = 0;
-          etapa = 14;
-        } else if (escolha === "2") {
-          erros = 0;
-          etapa = 16;
-        } else {
-          erroDeOpcao();
-        }
-        break;
-
-      case 13:
-        if (escolha === "2") {
-          erros = 0;
-          finalizar(
-            "DERROTA // FINAL DE ABANDONO",
-            "Você continua escondido enquanto os guardas levam A mulher e o chip. A chuva apaga as pegadas. O beco fica vazio.",
-            "Escondido nas sombras.png",
-          );}
-        else if (escolha === "1" && armado) {
+        
+        case 11:
+          if (escolha === "1") {
+            erros = 0;
+            etapa = 14;
+          } else if (escolha === "2") {
+            erros = 0;
+            etapa = 16;
+          } else {
+            erroDeOpcao();
+          }
+          break;
+          
+          case 13:
+            if (escolha === "2") {
+              erros = 0;
+              finalizar(
+                "DERROTA // FINAL DE ABANDONO",
+                "Você continua escondido enquanto os guardas levam A mulher e o chip. A chuva apaga as pegadas. O beco fica vazio.",
+                "Escondido nas sombras.png",
+              );}
+              else if (escolha === "1" && armado) {
             erros = 0;
             etapa = 21;
           }
@@ -392,64 +371,68 @@ comando.addEventListener("keydown", (event) => {
                 "Fuga Neon sob Chuva e Pixel.png",
               );
             }
-        else {
-          erroDeOpcao();
-        }
-        break;
-
-      case 15:
-        tela.innerHTML = `
+            else {
+              erroDeOpcao();
+            }
+            break;
+            
+            case 15:
+              tela.innerHTML = `
           <p>Eles foram embora. O chip verdadeiro continua com você.</p>
           <img src="../ASSETS/IMG/1- Aos Pés do Neon Kabuki.png" alt="Protagonista passando pelos guardas sem ser visto">
           <p>[1] Ir para casa examinar o chip<br>[2] Levar a mulher ao hospital</p>
         `;
         etapa = 23;
         break;
-      case 23:
-        if (escolha === "1") {
-          erros = 0;
-          etapa = 24;
-        } else if (escolha === "2") {
-          erros = 0;
-          hospital = true;
-          etapa = 28;
-        } else {
-          erroDeOpcao();
-        }
-        break;
-
-      case 17:
-        if (escolha === "1") {
-          erros = 0;
-          if (armado) {
-            etapa = 22;
+        case 23:
+          if (escolha === "1") {
+            erros = 0;
+            etapa = 24;
+          } else if (escolha === "2") {
+            erros = 0;
+            hospital = true;
+            etapa = 28;
           } else {
-            finalizar(
-              "DERROTA // OS GUARDAS VENCERAM",
-              "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
-              "Fuga Neon sob Chuva e Pixel.png",
-            );
+            erroDeOpcao();
           }
-        } else if (escolha === "2") {
-          erros = 0;
-          etapa = 18;
-        } else {
-          erroDeOpcao();
-        }
-        break;
-
-      case 19:
-        if (escolha === "1") {
+          break;
+          
+          case 17:
+            if (escolha === "1") {
+              erros = 0;
+              if (armado) {
+                etapa = 22;
+              } else {
+                finalizar(
+                  "DERROTA // OS GUARDAS VENCERAM",
+                  "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
+                  "Fuga Neon sob Chuva e Pixel.png",
+                );
+              }
+            } else if (escolha === "2") {
+              erros = 0;
+              etapa = 18;
+            } else {
+              erroDeOpcao();
+            }
+            break;
+          case 27:
+            tela.innerHTML = `<p>O programa é progetado da mente da Yara para a tela do seu computador:</p>
+            <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif">`
+            etapa = "fim"
+            break;
+            case 19:
+              if (escolha === "1") {
           erros = 0;
           etapa = 20;
         } else {
           erroDeOpcao();
         }
         break;
-
-      case 25:
-        if (escolha === "1") {
-          erros = 0;
+        
+        case 25:
+          if (escolha === "1") {
+            erros = 0;
           etapa = 26;
         } else if (escolha === "2") {
           erros = 0;
@@ -462,9 +445,42 @@ comando.addEventListener("keydown", (event) => {
           erroDeOpcao();
         }
         break;
+        
+        case "fim":
+      if (escolha.toUpperCase() === senhaChip && mulher) {
+        finalizar(
+          "FASE 2 // SINAL LOCALIZADO",
+          "A senha é aceita. O programa revela Night City em 2124, sob arranha-céus submersos. Uma assinatura neural da mulher surge no mapa. Uma voz atravessa o terminal: ‘Se chegou até aqui, o futuro já nos encontrou.’",
+          "Infiltração Neon no Corredor 307.png",
+        );
+      } else if(escolha.toUpperCase() === senhaChip) {
+        finalizar(
+          "FASE 2 // SINAL LOCALIZADO",
+          "A senha é aceita. Uma voz atravessa o terminal: ‘Se chegou até aqui, o futuro já nos encontrou.’",
+          "Infiltração Neon no Corredor 307.png",
+        );
+      } {
+        errosSenha++;
+        comando.value = "";
+        
+        if (errosSenha === 2) {
+          finalizar(
+            "DERROTA // LOCALIZAÇÃO COMPARTILHADA",
+            "A segunda senha incorreta fecha o programa. Sua localização é enviada à corporação.",
+            "Senha incorreta.png",
+          );
+        } else {
+          resposta.textContent = "Senha incorreta. Você tem mais uma tentativa.";
+        }
+      }
+      
+      comando.value = "";
+      return;
+      
+      
     }
   }
-
+    
   comando.value = "";
 
   // Uma escolha válida já mostra a cena seguinte.
