@@ -9,14 +9,15 @@ let etapa = 0;
 let erros = 0;
 let errosSenha = 0;
 let hackeou = false;
-let armado = false;
+let preparado = false;
 let hospital = false;
 let mulher = false;
+let ganhou = false;
 
 function eliminado() {
   tela.innerHTML = `
     <img class="msg-cont" src="../ASSETS/IMG/GIF/perdeu.gif">`;
-    location.href = "../index.html"
+  location.href = "../index.html";
 }
 
 function erroDeOpcao() {
@@ -289,7 +290,7 @@ comando.addEventListener("keydown", (event) => {
       case 3:
         if (escolha === "1") {
           erros = 0;
-          armado = false;
+          preparado = false;
           etapa = 6;
         } else if (escolha === "2") {
           erros = 0;
@@ -303,7 +304,7 @@ comando.addEventListener("keydown", (event) => {
       case 5:
         if (escolha === "1" || escolha === "2") {
           erros = 0;
-          armado = escolha === "1";
+          preparado = escolha === "1";
           etapa = 6;
         } else {
           erroDeOpcao();
@@ -328,7 +329,7 @@ comando.addEventListener("keydown", (event) => {
           etapa = 12;
         } else if (escolha === "1") {
           erros = 0;
-          if (armado) {
+          if (preparado) {
             etapa = 22;
           } else {
             finalizar(
@@ -336,9 +337,6 @@ comando.addEventListener("keydown", (event) => {
               "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
               "Fuga Neon sob Chuva e Pixel.png",
             );
-            setTimeout(() => {
-              eliminado();
-            }, 5000);
           }
         } else {
           erroDeOpcao();
@@ -365,10 +363,7 @@ comando.addEventListener("keydown", (event) => {
             "Você continua escondido enquanto os guardas levam A mulher e o chip. A chuva apaga as pegadas. O beco fica vazio.",
             "Escondido nas sombras.png",
           );
-          setTimeout(() => {
-            eliminado();
-          }, 5000);
-        } else if (escolha === "1" && armado) {
+        } else if (escolha === "1" && preparado) {
           erros = 0;
           etapa = 21;
         } else if (escolha === "1") {
@@ -378,9 +373,6 @@ comando.addEventListener("keydown", (event) => {
             "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
             "Fuga Neon sob Chuva e Pixel.png",
           );
-          setTimeout(() => {
-            eliminado();
-          }, 5000);
         } else {
           erroDeOpcao();
         }
@@ -410,7 +402,7 @@ comando.addEventListener("keydown", (event) => {
       case 17:
         if (escolha === "1") {
           erros = 0;
-          if (armado) {
+          if (preparado) {
             etapa = 22;
           } else {
             finalizar(
@@ -418,9 +410,6 @@ comando.addEventListener("keydown", (event) => {
               "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
               "Fuga Neon sob Chuva e Pixel.png",
             );
-            setTimeout(() => {
-              eliminado();
-            }, 5000);
           }
         } else if (escolha === "2") {
           erros = 0;
@@ -432,13 +421,13 @@ comando.addEventListener("keydown", (event) => {
       case 27:
         tela.innerHTML = `<p>O programa é projetado da mente da Yara para a tela do seu computador:</p>
             <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif">`;
-            comando.disabled = true
-            setTimeout(() => {
-              tela.innerHTML = `<p>O programa é projetado da mente da Yara para a tela do seu computador:</p>
+        comando.disabled = true;
+        setTimeout(() => {
+          tela.innerHTML = `<p>O programa é projetado da mente da Yara para a tela do seu computador:</p>
               <img src="../ASSETS/IMG/senha_chip.png">`;
-              etapa = "fim";
-              comando.disabled = false
-              comando.focus()
+          etapa = "fim";
+          comando.disabled = false;
+          comando.focus();
         }, 11000);
         break;
       case 19:
@@ -461,9 +450,6 @@ comando.addEventListener("keydown", (event) => {
             "Você vai dormir. Durante a noite, o chip aquece e projeta uma coordenada no escuro. Um veículo para sob a janela. Ao amanhecer, os arquivos continuam fechados e você é preso e morto na cadeia por um dos guardas, você matou o irmão mais novo dele naquela noite... O sistema não é justo.",
             "Esquecer e ir dormir.png",
           );
-          setTimeout(() => {
-            eliminado();
-          }, 5000);
         } else {
           erroDeOpcao();
         }
@@ -476,12 +462,14 @@ comando.addEventListener("keydown", (event) => {
             "A senha é aceita. O programa revela Night City em 2124, sob arranha-céus submersos. Uma assinatura neural da mulher surge no mapa. Uma voz atravessa o terminal: ‘Se chegou até aqui, o futuro já nos encontrou.’",
             "Infiltração Neon no Corredor 307.png",
           );
+          ganhou = true;
         } else if (escolha.toUpperCase() === senhaChip) {
           finalizar(
             "FASE 2 // SINAL LOCALIZADO",
             "A senha é aceita. Uma voz atravessa o terminal: ‘Se chegou até aqui, o futuro já nos encontrou.’",
             "Infiltração Neon no Corredor 307.png",
           );
+          ganhou = true;
         } else {
           errosSenha++;
           comando.value = "";
@@ -492,13 +480,21 @@ comando.addEventListener("keydown", (event) => {
               "A segunda senha incorreta fecha o programa. Sua localização é enviada à corporação.",
               "Senha incorreta.png",
             );
-            setTimeout(() => {
-              eliminado();
-            }, 5000);
           } else {
             resposta.textContent =
               "Senha incorreta. Você tem mais uma tentativa.";
           }
+        }
+
+      case 99:
+        if (!ganhou) {
+          setTimeout(() => {
+            tela.innerHTML = `
+    <img class="msg-cont" src="../ASSETS/IMG/GIF/perdeu.gif">`;
+            setTimeout(() => {
+              location.href = "../index.html";
+            }, 1000);
+          }, 5000);
         }
 
         comando.value = "";
