@@ -53,71 +53,19 @@ input {
   width: 45vw;
 }
 
-.terminal {
-  box-sizing: border-box;
-  width: 45vw;
-  height: 32.5vw;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 18px;
-  background: #05070a;
-  color: #00ff64;
-  font: 13px/20px Consolas, "Courier New", monospace;
-  scrollbar-color: #00ff64 #05070a;
-  scrollbar-width: thin;
-}
-
-.terminal h2 {
-  color: #f1f1f1;
-  font-size: 40px;
-  margin: 15px;
-}
-
-.terminal p {
-  margin: 0;
-  overflow-wrap: anywhere;
-}
-
-.system { color: #00b4ff; }
-.loc { color: #ffdc00; }
-.alert { color: #ff4141; }
-
-.terminal::-webkit-scrollbar {
-  width: 8px;
-}
-
-.terminal::-webkit-scrollbar-track {
-  background: #05070a;
-}
-
-.terminal::-webkit-scrollbar-thumb {
-  background: #00ff64;
-  border-radius: 4px;
-}
-
-.coment {
-  color: gray;
-}
-
-.tremerS {
-  border-radius: 10px;
-  animation: tremerS 1s  infinite linear;
-}
-
-@keyframes tremerS {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    5% { transform: translate(-2px, 1px) rotate(-1deg); }
-    10% { transform: translate(1px, -1px) rotate(1deg); }
-    15% { transform: translate(-1px, 2px) rotate(0deg); }
-    20% { transform: translate(2px, -1px) rotate(-1deg); }
-    25% { transform: translate(-2px, -1px) rotate(1deg); }
-    30% { transform: translate(1px, 2px) rotate(0deg); }
-    35% { transform: translate(-1px, -1px) rotate(-1deg); }
-    40% { transform: translate(2px, 1px) rotate(1deg); }
-
-    50%, 100%{transform: translate(0, 0) rotate(0deg);}
+.msg-cont {
+  width: 100%;
+  height: 60%;
 }
 
 .senha {
-  
+  background-color: transparent;
+  width: 22.8vw;
+  height: 13.9px;
+  position: absolute;
+  margin-top: 22.1rem;
+  margin-left: 9.4rem;
+  font-size: 10px;
+  caret-color: #015001;
+  color: #015001;
 }

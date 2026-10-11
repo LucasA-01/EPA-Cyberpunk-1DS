@@ -1,7 +1,8 @@
-const comando = document.querySelector(".comando");
+let comando = document.querySelector(".comando");
 const resposta = document.querySelector(".resposta");
 const popup = document.querySelector(".ler-mais");
 const tela = document.querySelector(".jogo");
+const input = document.querySelector("#console-input")
 
 const senhaChip = "MT1685PE0703-AUALZC47058D";
 
@@ -29,20 +30,16 @@ function erroDeOpcao() {
             <img src="../ASSETS/IMG/Rendido pelos guardas.png" alt="O protagonista é capturado">
             <h2>FIM DE JOGO</h2>
             `;
-    comando.disabled = true;
+    setTimeout(() => {
+      tela.innerHTML = `
+    <img class="msg-cont" src="../ASSETS/IMG/GIF/perdeu.gif">`;
+      setTimeout(() => {
+        location.href = "../index.html";
+      }, 1000);
+    }, 5000);
   } else {
     resposta.textContent = `Opção inválida. Tentativa ${erros}/3.`;
   }
-}
-
-function finalizar(titulo, texto, imagem) {
-  tela.innerHTML = `
-          <p>${texto}</p>
-          <img src="../ASSETS/IMG/${imagem}" alt="Imagem do final">
-          <h2>${titulo}</h2>
-          `;
-  etapa = 99;
-  comando.disabled = true;
 }
 
 function mostrarProximaTela() {
@@ -77,7 +74,7 @@ function mostrarProximaTela() {
 
       case 31:
         tela.innerHTML = `
-            <p>Ao amanhecer, a mulher acorda, vocês deixam o hospital e seguem para sua casa. <br> No caminho ela diz que seu nome é Yara</p>
+            <p>Ao amanhecer, a mulher acorda, vocês deixam o hospital e seguem para sua casa. <br> No caminho ela diz que o implante causou o dano no seu leitor neural e por isso não pôde ler os arquivos.</p>
             <img src="../ASSETS/IMG/Fuga Neon de Manha.png" alt="A mulher recuperada no hospital">
             <p>Pressione Enter para avançar.</p>
             `;
@@ -86,12 +83,12 @@ function mostrarProximaTela() {
 
       case 32:
         tela.innerHTML = `
-              <p>Em casa, você conecta o chip ao implante na cabeça da Yara.</p>
+              <p>Em casa, você...</p>
               <img src="../ASSETS/IMG/Implante Neon no Quarto Cyberpunk.png" alt="Chip conectado ao implante neural de A mulher">
+              <p>[1] Tenta usar o leitor da mulher e cuidar para não danificar o leitor dela.<br> [2] Tenta hackear tudo sozinho usando um programa de suporte.</p>
               `;
         hospital = false;
-        mulher = true;
-        etapa = 27;
+        etapa = 26;
         break;
     }
     comando.value = "";
@@ -231,22 +228,53 @@ function mostrarProximaTela() {
 
     case 24:
       tela.innerHTML = `
-          <p>Você tranca a porta e liga o leitor neural. O programa reconhece o chip, mas não abre os arquivos sozinho.</p>
+          <p>Você tranca a porta e...</p>
           <img src="../ASSETS/IMG/2- Entrando em casa com o chip.png" alt="Chip conectado ao computador em casa">
-          <p>[1] Examinar o código do chip<br>[2] Ir dormir</p>
+          <p>[1] Examina o código do chip, afinal você não tem tempo, os guardas podem chegar a qualquer momento.<br>[2] Vai dormir e resolver amanhã, afinal você está muito cansado e precisa de foco para não errar nenhum detalhe ao examinar o chip</p>
         `;
       etapa = 25;
       break;
 
-    case 26:
+    case 27:
+      let comando = document.querySelector(".senha");
       tela.innerHTML = `
           <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
           <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif" alt="Programa esperando a senha do chip">
-          <input class="senha" name="senha" autofocus autocomplete="off">
+          `;
+      setTimeout(() => {
+        tela.innerHTML = `
+        <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
+        <img src="../ASSETS/IMG/senha_chip.png">
+        <input class="senha" name="senha" autofocus autocomplete="off">
         `;
-      comando.disabled = true;
-      mulher = false;
+      }, 11000);
+      input.innerHTML = ""
       etapa = "fim";
+      break;
+
+    case 99:
+      if (!ganhou) {
+        comando.disabled = true;
+        tela.innerHTML = `
+      <p class="erro">Sua escolha errada resultou na falha do sistema e consequentemente na sua morte!</p>
+    `;
+
+        setTimeout(() => {
+          document.body.innerHTML = `
+      <img class="msg-cont" src="../ASSETS/IMG/GIF/perdeu.gif" alt="Fim de jogo">
+      `;
+
+          document.querySelector(".msg-cont").scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "center",
+          });
+
+          setTimeout(() => {
+            location.href = "../index.html";
+          }, 1000);
+        }, 3000);
+      }
       break;
   }
 
@@ -264,7 +292,7 @@ comando.addEventListener("keydown", (event) => {
   // No hospital, Enter avança uma tela por vez.
   if (hospital) {
     if (escolha !== "") {
-      resposta.textContent = "Pressione Enter para avançar.";
+      tela.innerHTML += "<p>Pressione Enter para avançar.</p>";
       comando.value = "";
       return;
     }
@@ -332,11 +360,7 @@ comando.addEventListener("keydown", (event) => {
           if (preparado) {
             etapa = 22;
           } else {
-            finalizar(
-              "DERROTA // OS GUARDAS VENCERAM",
-              "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
-              "Fuga Neon sob Chuva e Pixel.png",
-            );
+            etapa = 99;
           }
         } else {
           erroDeOpcao();
@@ -356,23 +380,12 @@ comando.addEventListener("keydown", (event) => {
         break;
 
       case 13:
-        if (escolha === "2") {
-          erros = 0;
-          finalizar(
-            "DERROTA // FINAL DE ABANDONO",
-            "Você continua escondido enquanto os guardas levam A mulher e o chip. A chuva apaga as pegadas. O beco fica vazio.",
-            "Escondido nas sombras.png",
-          );
-        } else if (escolha === "1" && preparado) {
+        if (escolha === "1" && preparado) {
           erros = 0;
           etapa = 21;
-        } else if (escolha === "1") {
+        } else if (escolha === "1" || escolha === "2") {
           erros = 0;
-          finalizar(
-            "DERROTA // OS GUARDAS VENCERAM",
-            "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
-            "Fuga Neon sob Chuva e Pixel.png",
-          );
+          etapa = 99;
         } else {
           erroDeOpcao();
         }
@@ -405,11 +418,7 @@ comando.addEventListener("keydown", (event) => {
           if (preparado) {
             etapa = 22;
           } else {
-            finalizar(
-              "DERROTA // OS GUARDAS VENCERAM",
-              "Você reage, mas sem preparo os guardas o derrubam antes da fuga.",
-              "Fuga Neon sob Chuva e Pixel.png",
-            );
+            etapa = 99;
           }
         } else if (escolha === "2") {
           erros = 0;
@@ -418,17 +427,31 @@ comando.addEventListener("keydown", (event) => {
           erroDeOpcao();
         }
         break;
-      case 27:
-        tela.innerHTML = `<p>O programa é projetado da mente da Yara para a tela do seu computador:</p>
-            <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif">`;
-        comando.disabled = true;
-        setTimeout(() => {
-          tela.innerHTML = `<p>O programa é projetado da mente da Yara para a tela do seu computador:</p>
-              <img src="../ASSETS/IMG/senha_chip.png">`;
-          etapa = "fim";
-          comando.disabled = false;
-          comando.focus();
-        }, 11000);
+      case 26:
+        if (escolha === "1") {
+          tela.innerHTML = `<p class="erro">Dessa vez o sistema de segurança de dados do chip funcionou corretamente e apagou todos os arquivos</p>
+              <img src="../ASSETS/IMG/GIF/caveira_rb_piscando.gif">`;
+          setTimeout(() => {
+            document.body.innerHTML = `
+      <img class="msg-cont" src="../ASSETS/IMG/GIF/perdeu.gif" alt="Fim de jogo">
+      `;
+
+            document.querySelector(".msg-cont").scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+              inline: "center",
+            });
+
+            setTimeout(() => {
+              location.href = "../index.html";
+            }, 1000);
+          }, 3000);
+          comando.disabled = true;
+        } else if (escolha === "2") {
+          etapa = 27;
+        } else {
+          erroDeOpcao();
+        }
         break;
       case 19:
         if (escolha === "1") {
@@ -442,59 +465,29 @@ comando.addEventListener("keydown", (event) => {
       case 25:
         if (escolha === "1") {
           erros = 0;
-          etapa = 26;
+          etapa = 27;
         } else if (escolha === "2") {
           erros = 0;
-          finalizar(
-            "DERROTA // FINAL ALTERNATIVO // A NOITE ADIADA",
-            "Você vai dormir. Durante a noite, o chip aquece e projeta uma coordenada no escuro. Um veículo para sob a janela. Ao amanhecer, os arquivos continuam fechados e você é preso e morto na cadeia por um dos guardas, você matou o irmão mais novo dele naquela noite... O sistema não é justo.",
-            "Esquecer e ir dormir.png",
-          );
+          etapa = 99;
         } else {
           erroDeOpcao();
         }
         break;
 
       case "fim":
-        if (escolha.toUpperCase() === senhaChip && mulher) {
-          finalizar(
-            "FASE 2 // SINAL LOCALIZADO",
-            "A senha é aceita. O programa revela Night City em 2124, sob arranha-céus submersos. Uma assinatura neural da mulher surge no mapa. Uma voz atravessa o terminal: ‘Se chegou até aqui, o futuro já nos encontrou.’",
-            "Infiltração Neon no Corredor 307.png",
-          );
-          ganhou = true;
-        } else if (escolha.toUpperCase() === senhaChip) {
-          finalizar(
-            "FASE 2 // SINAL LOCALIZADO",
-            "A senha é aceita. Uma voz atravessa o terminal: ‘Se chegou até aqui, o futuro já nos encontrou.’",
-            "Infiltração Neon no Corredor 307.png",
-          );
+        if (escolha.toUpperCase() === senhaChip) {
+          etapa = 99;
           ganhou = true;
         } else {
           errosSenha++;
           comando.value = "";
 
           if (errosSenha === 2) {
-            finalizar(
-              "DERROTA // LOCALIZAÇÃO COMPARTILHADA",
-              "A segunda senha incorreta fecha o programa. Sua localização é enviada à corporação.",
-              "Senha incorreta.png",
-            );
+            etapa = 99;
           } else {
             resposta.textContent =
               "Senha incorreta. Você tem mais uma tentativa.";
           }
-        }
-
-      case 99:
-        if (!ganhou) {
-          setTimeout(() => {
-            tela.innerHTML = `
-    <img class="msg-cont" src="../ASSETS/IMG/GIF/perdeu.gif">`;
-            setTimeout(() => {
-              location.href = "../index.html";
-            }, 1000);
-          }, 5000);
         }
 
         comando.value = "";
