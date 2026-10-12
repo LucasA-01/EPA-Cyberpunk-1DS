@@ -375,12 +375,8 @@ function mostrarProximaTela() {
   comando.value = "";
 }
 
-document.addEventListener(
-  "keydown",
-  (event) => {
-    if (
-      event.key !== "Enter" ||
-      !(typeof etapa === "number" && etapa >= 100 && etapa <= 107)
+document.addEventListener("keydown",(event) => {
+    if (event.key !== "Enter" || (etapa >= 100 && etapa <= 107)
     ) {
       return;
     }
