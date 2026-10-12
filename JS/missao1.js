@@ -7,7 +7,6 @@ const local = document.querySelector("#local");
 const tudo = document.querySelector("#content");
 const final = document.querySelector("#final");
 
-
 const senhaChip = "MT1685PE0703-AUALZC47058D";
 
 let etapa = 0;
@@ -19,7 +18,6 @@ let hospital = false;
 let mulher = false;
 let ganhou = false;
 let bloqueiaEnterFinal = false;
-
 
 function eliminado() {
   tela.innerHTML = `
@@ -42,7 +40,7 @@ function erroDeOpcao() {
       setTimeout(() => {
         location.href = "../index.html";
       }, 1000);
-    }, 5000);
+    }, 2200);
   } else {
     resposta.textContent = `Opção inválida. Tentativa ${erros}/3.`;
   }
@@ -218,7 +216,7 @@ function mostrarProximaTela() {
           <p>Os guardas estavam analisando o chip, você pegou os guardas de surpresa e derrubou eles</p>
           <img src="../ASSETS/IMG/Tiroteio com Drones.png" alt="Protagonista escapando por Kabuki">
           <p>[1] Roubar o chip e ir para casa descobrir as informações do chip<br>[2] Pegar o chip e fugir com a mulher para salvar a vida dela</p>
-        `;
+          `;
       etapa = 23;
       break;
 
@@ -241,12 +239,14 @@ function mostrarProximaTela() {
       break;
 
     case 27:
+      bloqueiaEnterFinal = true;
       tela.innerHTML = `
-          <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
-          <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif" alt="Programa esperando a senha do chip">
-          `;
+      <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
+      <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif" alt="Programa esperando a senha do chip">
+      `;
       local.remove();
       setTimeout(() => {
+        bloqueiaEnterFinal = false;
         tela.innerHTML = `
         <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
         <img src="../ASSETS/IMG/senha_chip.png">
@@ -261,7 +261,7 @@ function mostrarProximaTela() {
         comando.disabled = true;
         tela.innerHTML = `
       <p class="erro">Sua escolha errada resultou na falha do sistema e consequentemente na sua morte!</p>
-    `;
+      `;
 
         setTimeout(() => {
           document.body.innerHTML = `
@@ -297,77 +297,77 @@ function mostrarProximaTela() {
         }, 3770);
       }, 22000);
       break;
-      
-      case 101:
-        bloqueiaEnterFinal = true;
-        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_02.gif">`;
-        setTimeout(() => {
+
+    case 101:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_02.gif">`;
+      setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_02.png">
         <p>Pressione Enter para continuar.</p>`;
         etapa = 102;
       }, 3970);
       break;
-      
-      case 102:
-        bloqueiaEnterFinal = true;
-        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_03.gif">`;
-        setTimeout(() => {
+
+    case 102:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_03.gif">`;
+      setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_03.png">
         <p>Pressione Enter para continuar.</p>`;
         etapa = 103;
       }, 3970);
       break;
-      
-      case 103:
-        bloqueiaEnterFinal = true;
-        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_04.gif">`;
-        setTimeout(() => {
+
+    case 103:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_04.gif">`;
+      setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_04.png">
         <p>Pressione Enter para continuar.</p>`;
         etapa = 104;
       }, 3920);
       break;
-      
-      case 104:
-        bloqueiaEnterFinal = true;
-        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_05.gif">`;
-        setTimeout(() => {
+
+    case 104:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_05.gif">`;
+      setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_05.png">
         <p>Pressione Enter para continuar.</p>`;
         etapa = 105;
       }, 3970);
       break;
-      
-      case 105:
-        bloqueiaEnterFinal = true;
-        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_06.gif">`;
-        setTimeout(() => {
+
+    case 105:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_06.gif">`;
+      setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_06.png">
         <p>Pressione Enter para continuar.</p>`;
         etapa = 106;
       }, 3970);
       break;
-      
-      case 106:
-        bloqueiaEnterFinal = true;
-        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_07.gif">`;
-        setTimeout(() => {
+
+    case 106:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_07.gif">`;
+      setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_07.png">
         <p>Pressione Enter para continuar.</p>`;
         etapa = 107;
       }, 3490);
       break;
-      
-      case 107:
-        bloqueiaEnterFinal = true;
-        final.innerHTML = `<img src="../ASSETS/IMG/GIF/caveira_piscando.gif">`;
-        setTimeout(() => {
+
+    case 107:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img src="../ASSETS/IMG/GIF/caveira_piscando.gif">`;
+      setTimeout(() => {
         location.href = "../index.html";
       }, 8900);
   }
@@ -375,21 +375,38 @@ function mostrarProximaTela() {
   comando.value = "";
 }
 
+document.addEventListener(
+  "keydown",
+  (event) => {
+    if (
+      event.key !== "Enter" ||
+      !(typeof etapa === "number" && etapa >= 100 && etapa <= 107)
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (bloqueiaEnterFinal) return;
+
+    comando.value = "";
+    mostrarProximaTela();
+  },
+  true
+);
+
 comando.addEventListener("keydown", (event) => {
   if (event.key !== "Enter") return;
   event.preventDefault();
   if (etapa >= 100 && etapa <= 107 && bloqueiaEnterFinal) {
-  comando.value = "";
-  return;
-}
+    comando.value = "";
+    return;
+  }
 
   const escolha = comando.value.trim();
   const etapaAntesDaEscolha = etapa;
   resposta.textContent = "";
-  if (escolha === "" && etapa >= 100 && etapa <= 107) {
-    mostrarProximaTela();
-    return;
-  }
 
   // No hospital, Enter avança uma tela por vez.
   if (hospital) {
