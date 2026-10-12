@@ -37,7 +37,7 @@ function erroDeOpcao() {
             <h2>FIM DE JOGO</h2>
             `;
     setTimeout(() => {
-      tela.innerHTML = `
+      document.body.innerHTML = `
     <img class="msg-cont" src="../ASSETS/IMG/GIF/perdeu.gif">`;
       setTimeout(() => {
         location.href = "../index.html";
