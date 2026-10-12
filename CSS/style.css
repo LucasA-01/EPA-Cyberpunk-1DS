@@ -8,6 +8,7 @@ body {
   font-family: monospace;
   font-size: 16px;
   color: #f1f1f1;
+  overflow: hidden;
 }
 
 header {
@@ -49,7 +50,7 @@ input {
   flex-direction: column;
 }
 
-.jogo img{
+.jogo img {
   width: 45vw;
 }
 
@@ -61,11 +62,22 @@ input {
 .senha {
   background-color: transparent;
   width: 22.8vw;
-  height: 13.9px;
+  height: 13.5px;
   position: absolute;
-  margin-top: 22.1rem;
-  margin-left: 9.4rem;
+  margin-top: -6.8348rem;
+  margin-left: 12.8rem;
   font-size: 10px;
   caret-color: #015001;
   color: #015001;
+}
+
+.invisivel {
+  caret-color: transparent;
+  color: transparent;
+  background-color: transparent;
+}
+
+.msg-cont {
+  align-self: center;
+  justify-self: center;
 }
