@@ -295,7 +295,7 @@ function mostrarProximaTela() {
           <p>Pressione Enter para continuar.</p>`;
           etapa = 101;
         }, 3770);
-      }, 22000);
+      }, 15500);
       break;
 
     case 101:
