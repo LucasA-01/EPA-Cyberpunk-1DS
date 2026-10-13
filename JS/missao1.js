@@ -252,6 +252,10 @@ function mostrarProximaTela() {
         <img src="../ASSETS/IMG/senha_chip.png">
         `;
         comando.classList.add("senha");
+        if (errosSenha > 0) {
+          comando.classList.remove("senha")
+          comando.classList.add("erroSenha")
+        }
       }, 11000);
       etapa = "fim";
       break;
@@ -375,11 +379,15 @@ function mostrarProximaTela() {
   comando.value = "";
 }
 
-document.addEventListener("keydown",(event) => {
-    if (event.key !== "Enter" || (etapa >= 100 && etapa <= 107)
-    ) {
-      return;
-    }
+document.addEventListener(
+  "keydown",
+  (event) => {
+    if (event.key !== "Enter") return;
+
+    // Deixa o listener do campo processar as escolhas digitadas.
+    if (event.target === comando) return;
+
+    if (etapa >= 100 && etapa <= 107) return;
 
     event.preventDefault();
     event.stopPropagation();
