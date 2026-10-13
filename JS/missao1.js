@@ -380,10 +380,21 @@ document.addEventListener(
   (event) => {
     if (event.key !== "Enter") return;
 
-    // Deixa o listener do campo processar as escolhas digitadas.
-    if (event.target === comando) return;
+    // O diálogo final é controlado pelo listener do documento,
+    // inclusive quando o campo está invisível ou sem foco.
+    if (etapa >= 100 && etapa <= 107) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    if (etapa >= 100 && etapa <= 107) return;
+      // Aguarda a animação terminar. A etapa 107 encerra automaticamente.
+      if (bloqueiaEnterFinal) return;
+
+      mostrarProximaTela();
+      return;
+    }
+
+    // Nas outras etapas, deixa o campo processar as escolhas.
+    if (event.target === comando) return;
 
     event.preventDefault();
     event.stopPropagation();
