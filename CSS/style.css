@@ -60,24 +60,24 @@ input {
 }
 
 .senha {
-  background-color: white;
+  background-color: transparent;
   width: 22.8vw;
   height: 13.5px;
   position: absolute;
-  margin-top: -6.8348rem;
-  margin-left: 12.8rem;
+  margin-top: -5.598rem;
+  margin-left: 9.49rem;
   font-size: 10px;
   caret-color: #015001;
   color: #015001;
 }
 
 .erroSenha {
-  background-color: red;
+  background-color: transparent;
   width: 22.8vw;
   height: 13.5px;
   position: absolute;
-  margin-top: -6.8348rem;
-  margin-left: 12.8rem;
+  margin-top: -6.80rem;
+  margin-left: 9.50rem;
   font-size: 10px;
   caret-color: #015001;
   color: #015001;
