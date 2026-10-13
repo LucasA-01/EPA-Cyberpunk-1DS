@@ -252,10 +252,6 @@ function mostrarProximaTela() {
         <img src="../ASSETS/IMG/senha_chip.png">
         `;
         comando.classList.add("senha");
-        if (errosSenha > 0) {
-          comando.classList.remove("senha")
-          comando.classList.add("erroSenha")
-        }
       }, 11000);
       etapa = "fim";
       break;
@@ -598,6 +594,8 @@ comando.addEventListener("keydown", (event) => {
         } else {
           errosSenha++;
           comando.value = "";
+          comando.classList.remove("senha")
+          comando.classList.add("erroSenha")
 
           if (errosSenha === 2) {
             etapa = 99;
