@@ -300,9 +300,9 @@ function mostrarProximaTela() {
         setTimeout(() => {
           bloqueiaEnterFinal = false;
           final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_01.png">
-          <p>Pressione Enter para continuar.</p>`;
+        <p>Pressione Enter para continuar.</p>`;
           etapa = 101;
-        }, 3770);
+        }, 6170);
       }, 15500);
       break;
 
@@ -312,9 +312,9 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_02.png">
-        <p>Pressione Enter para continuar.</p>`;
+      <p>Pressione Enter para continuar.</p>`;
         etapa = 102;
-      }, 3970);
+      }, 6370);
       break;
 
     case 102:
@@ -323,9 +323,9 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_03.png">
-        <p>Pressione Enter para continuar.</p>`;
+      <p>Pressione Enter para continuar.</p>`;
         etapa = 103;
-      }, 3970);
+      }, 6370);
       break;
 
     case 103:
@@ -334,9 +334,9 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_04.png">
-        <p>Pressione Enter para continuar.</p>`;
+      <p>Pressione Enter para continuar.</p>`;
         etapa = 104;
-      }, 3920);
+      }, 6320);
       break;
 
     case 104:
@@ -345,9 +345,9 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_05.png">
-        <p>Pressione Enter para continuar.</p>`;
+      <p>Pressione Enter para continuar.</p>`;
         etapa = 105;
-      }, 3970);
+      }, 6370);
       break;
 
     case 105:
@@ -356,9 +356,9 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_06.png">
-        <p>Pressione Enter para continuar.</p>`;
+      <p>Pressione Enter para continuar.</p>`;
         etapa = 106;
-      }, 3970);
+      }, 6370);
       break;
 
     case 106:
@@ -367,9 +367,9 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_07.png">
-        <p>Pressione Enter para continuar.</p>`;
+      <p>Pressione Enter para continuar.</p>`;
         etapa = 107;
-      }, 3490);
+      }, 5890);
       break;
 
     case 107:
@@ -378,6 +378,7 @@ function mostrarProximaTela() {
       setTimeout(() => {
         location.href = "../index.html";
       }, 8900);
+      break;
   }
 
   comando.value = "";
