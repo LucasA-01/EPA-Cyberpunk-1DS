@@ -291,86 +291,94 @@ function mostrarProximaTela() {
       break;
 
     case 100:
-  bloqueiaEnterFinal = true;
-  tudo.innerHTML = "";
-  comando.classList.add("invisivel");
-  final.innerHTML = `<img src="../ASSETS/IMG/GIF/caveira_falante.gif">`;
-  setTimeout(() => {
-    final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_01.gif">`;
-    setTimeout(() => {
-      bloqueiaEnterFinal = false;
-      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_01.png">
+      bloqueiaEnterFinal = true;
+      tudo.innerHTML = "";
+      comando.classList.add("invisivel");
+      final.innerHTML = `<img src="../ASSETS/IMG/GIF/caveira_falante.gif">`;
+      setTimeout(() => {
+        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_01.gif">`;
+        setTimeout(() => {
+          bloqueiaEnterFinal = false;
+          final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_01.png">
     <p>Pressione Enter para continuar.</p>`;
-      etapa = 101;
-    }, 3840);
-  }, 15500);
-  break;
+          etapa = 101;
+        }, 3840);
+      }, 15500);
+      break;
 
-case 101:
-  bloqueiaEnterFinal = true;
-  final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_02.gif">`;
-  setTimeout(() => {
-    bloqueiaEnterFinal = false;
-    final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_02.png">
+    case 101:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_02.gif">`;
+      setTimeout(() => {
+        bloqueiaEnterFinal = false;
+        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_02.png">
   <p>Pressione Enter para continuar.</p>`;
-    etapa = 102;
-  }, 4040);
-  break;
+        etapa = 102;
+      }, 4040);
+      break;
 
-case 102:
-  bloqueiaEnterFinal = true;
-  final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_03.gif">`;
-  setTimeout(() => {
-    bloqueiaEnterFinal = false;
-    final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_03.png">
+    case 102:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_03.gif">`;
+      setTimeout(() => {
+        bloqueiaEnterFinal = false;
+        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_03.png">
   <p>Pressione Enter para continuar.</p>`;
-    etapa = 103;
-  }, 4040);
-  break;
+        etapa = 103;
+      }, 4040);
+      break;
 
-case 103:
-  bloqueiaEnterFinal = true;
-  final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_04.gif">`;
-  setTimeout(() => {
-    bloqueiaEnterFinal = false;
-    final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_04.png">
+    case 103:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_04.gif">`;
+      setTimeout(() => {
+        bloqueiaEnterFinal = false;
+        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_04.png">
   <p>Pressione Enter para continuar.</p>`;
-    etapa = 104;
-  }, 3990);
-  break;
+        etapa = 104;
+      }, 3990);
+      break;
 
-case 104:
-  bloqueiaEnterFinal = true;
-  final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_05.gif">`;
-  setTimeout(() => {
-    bloqueiaEnterFinal = false;
-    final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_05.png">
+    case 104:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_05.gif">`;
+      setTimeout(() => {
+        bloqueiaEnterFinal = false;
+        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_05.png">
   <p>Pressione Enter para continuar.</p>`;
-    etapa = 105;
-  }, 4040);
-  break;
+        etapa = 105;
+      }, 4040);
+      break;
 
-case 105:
-  bloqueiaEnterFinal = true;
-  final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_06.gif">`;
-  setTimeout(() => {
-    bloqueiaEnterFinal = false;
-    final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_06.png">
+    case 105:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_06.gif">`;
+      setTimeout(() => {
+        bloqueiaEnterFinal = false;
+        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_06.png">
   <p>Pressione Enter para continuar.</p>`;
-    etapa = 106;
-  }, 4040);
-  break;
+        etapa = 106;
+      }, 4040);
+      break;
 
-case 106:
-  bloqueiaEnterFinal = true;
-  final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_07.gif">`;
-  setTimeout(() => {
-    bloqueiaEnterFinal = false;
-    final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_07.png">
+    case 106:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_07.gif">`;
+      setTimeout(() => {
+        bloqueiaEnterFinal = false;
+        final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/dialogo_final_07.png">
   <p>Pressione Enter para continuar.</p>`;
-    etapa = 107;
-  }, 3560);
-  break;
+        etapa = 107;
+      }, 3560);
+      break;
+
+    case 107:
+      bloqueiaEnterFinal = true;
+      final.innerHTML = `<img src="../ASSETS/IMG/GIF/caveira_piscando.gif">`;
+      setTimeout(() => {
+        location.href = "../index.html";
+      }, 8900);
+      break;
   }
 
   comando.value = "";
