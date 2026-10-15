@@ -239,20 +239,28 @@ function mostrarProximaTela() {
       break;
 
     case 27:
+    case 27:
       bloqueiaEnterFinal = true;
+      comando.disabled = true;
+
       tela.innerHTML = `
-      <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
-      <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif" alt="Programa esperando a senha do chip">
-      `;
+    <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
+    <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif" alt="Programa esperando a senha do chip">
+  `;
+
       local.remove();
+
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         tela.innerHTML = `
-        <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
-        <img src="../ASSETS/IMG/senha_chip.png">
-        `;
+      <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
+      <img src="../ASSETS/IMG/senha_chip.png">
+    `;
         comando.classList.add("senha");
+        comando.disabled = false;
+        comando.focus();
       }, 11000);
+
       etapa = "fim";
       break;
 
@@ -260,7 +268,7 @@ function mostrarProximaTela() {
       if (!ganhou) {
         comando.disabled = true;
         tela.innerHTML = `
-      <p class="erro">Sua escolha errada resultou na falha do sistema e consequentemente na sua morte!</p>
+      <p class="erro">Suas ações resultaram na falha do sistema e consequentemente na sua morte!</p>
       `;
 
         setTimeout(() => {
@@ -404,7 +412,7 @@ document.addEventListener(
     comando.value = "";
     mostrarProximaTela();
   },
-  true
+  true,
 );
 
 comando.addEventListener("keydown", (event) => {
@@ -605,11 +613,12 @@ comando.addEventListener("keydown", (event) => {
         } else {
           errosSenha++;
           comando.value = "";
-          comando.classList.remove("senha")
-          comando.classList.add("erroSenha")
+          comando.classList.remove("senha");
+          comando.classList.add("erroSenha");
 
-          if (errosSenha === 2) {
+          if (errosSenha >= 2) {
             etapa = 99;
+            mostrarProximaTela(); // Executa o case 99
           } else {
             resposta.textContent =
               "Senha incorreta. Você tem mais uma tentativa.";
