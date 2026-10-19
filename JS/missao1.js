@@ -7,7 +7,7 @@ const local = document.querySelector("#local");
 const tudo = document.querySelector("#content");
 const final = document.querySelector("#final");
 
-const senhaChip = "MT1685PE0703-AUALZC47058D";
+const senhaChip = "01000011";
 
 let etapa = 0;
 let erros = 0;
@@ -253,7 +253,7 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         tela.innerHTML = `
-      <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
+      <p>Uma senha protege os arquivos. Procure fora do jogo, abaixo de você há números. (Ex: xxxxxxxx)</p>
       <img src="../ASSETS/IMG/senha_chip.png">
     `;
         comando.classList.add("senha");
@@ -294,7 +294,7 @@ function mostrarProximaTela() {
       bloqueiaEnterFinal = true;
       tudo.innerHTML = "";
       comando.classList.add("invisivel");
-      final.innerHTML = `<img src="../ASSETS/IMG/GIF/caveira_falante.gif">`;
+      final.innerHTML = `<img class="a" src="../ASSETS/IMG/GIF/caveira_falante.gif">`;
       setTimeout(() => {
         final.innerHTML = `<img class="msg-cont" src="../ASSETS/IMG/GIF/dialogo_final_01.gif">`;
         setTimeout(() => {
@@ -374,7 +374,7 @@ function mostrarProximaTela() {
 
     case 107:
       bloqueiaEnterFinal = true;
-      final.innerHTML = `<img src="../ASSETS/IMG/GIF/caveira_piscando.gif">`;
+      final.innerHTML = `<img class="a" src="../ASSETS/IMG/GIF/caveira_piscando.gif">`;
       setTimeout(() => {
         location.href = "../index.html";
       }, 8900);
@@ -577,7 +577,7 @@ comando.addEventListener("keydown", (event) => {
             setTimeout(() => {
               location.href = "../index.html";
             }, 1000);
-          }, 7500);
+          }, 8000);
           comando.disabled = true;
         } else if (escolha === "2") {
           etapa = 27;

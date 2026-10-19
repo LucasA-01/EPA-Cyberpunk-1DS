@@ -35,21 +35,6 @@ comando.addEventListener('keydown', (event) => {
             scroll()
             break;
             
-            case "2":
-            comando.value = "";
-            resposta.innerHTML += `<div class="certo">\nAbrindo Missão...</div><br>`;
-            setTimeout(() => {
-                body.value = "";
-                body.style.backgroundColor = "white";
-                document.querySelector('input').style.backgroundColor = "white";
-                setTimeout(() => {
-                    body.style.backgroundColor = "#000";
-                    document.querySelector('input').style.backgroundColor = "#000";
-                }, 500)
-            }, 1000)
-            scroll()
-            break;
-            
             default:
             comando.value = "";
             resposta.innerHTML += `<div class="erro">\nOpção inválida!</div><br>`;
