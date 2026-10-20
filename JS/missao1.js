@@ -241,7 +241,7 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         tela.innerHTML = `
-      <p class="acerto">[Você tem 45s para responder] A senha possui 3 dígitos cuja soma é 20. (1ºN = 2ºN + 3 | 2ºN = 4 | 3ºN = 20 - 11). Qual é a senha?</p>
+      <p id="dica">[Você tem 45s para responder] A senha possui 3 dígitos onde: 1ºN = 2ºN + 3 | 2ºN = 4 | 3ºN = 20 - 11. Qual é a senha?</p>
       <img class="img-senha" src="../ASSETS/IMG/senha_chip.png">
     `;
         comando.classList.add("senha");
