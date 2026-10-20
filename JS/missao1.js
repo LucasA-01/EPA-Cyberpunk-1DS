@@ -7,7 +7,7 @@ const local = document.querySelector("#local");
 const tudo = document.querySelector("#content");
 const final = document.querySelector("#final");
 
-const senhaChip = "6374";
+const senhaChip = "749";
 
 let etapa = 0;
 let erros = 0;
@@ -241,7 +241,7 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         tela.innerHTML = `
-      <p class="acerto">[Você tem 45s para responder] A senha possui 4 dígitos cuja soma é 20. (1º = dobro do 2º | 3º = 4º + 3 | 4º = 4). Qual é a senha?</p>
+      <p class="acerto">[Você tem 45s para responder] A senha possui 3 dígitos cuja soma é 20. (1ºN = 2ºN + 3 | 2ºN = 4 | 3ºN = 20 - 11). Qual é a senha?</p>
       <img class="img-senha" src="../ASSETS/IMG/senha_chip.png">
     `;
         comando.classList.add("senha");
