@@ -92,3 +92,26 @@ input {
 .a {
   width: 100%;
 }
+
+@property --progresso-senha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+.img-senha {
+  --progresso-senha: 0%;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(
+    to right,
+    #00ff88 var(--progresso-senha),
+    transparent var(--progresso-senha)
+  ) 1;
+  animation: contagem-senha 45s linear forwards;
+}
+
+@keyframes contagem-senha {
+  to {
+    --progresso-senha: 100%;
+  }
+}

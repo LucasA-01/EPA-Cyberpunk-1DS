@@ -7,7 +7,7 @@ const local = document.querySelector("#local");
 const tudo = document.querySelector("#content");
 const final = document.querySelector("#final");
 
-const senhaChip = "01000011";
+const senhaChip = "6374";
 
 let etapa = 0;
 let erros = 0;
@@ -18,6 +18,8 @@ let hospital = false;
 let mulher = false;
 let ganhou = false;
 let bloqueiaEnterFinal = false;
+let timerSenha = null;
+let tempoSenhaEsgotado = false;
 
 function eliminado() {
   tela.innerHTML = `
@@ -60,25 +62,16 @@ function mostrarProximaTela() {
 
       case 29:
         tela.innerHTML = `
-                  <p>A equipe a coloca na maca e liga os monitores. Um dos médicos encontra atividade neural, mas ela está fraca.</p>
+                  <p>O implante causou o dano no seu leitor neural, mas ela sobreviveu.</p>
                   <img src="../ASSETS/IMG/3- Mulher na maca.png" alt="A mulher sobre uma maca">
                   <p>Pressione Enter para avançar.</p>
                   `;
-        etapa = 30;
-        break;
-
-      case 30:
-        tela.innerHTML = `
-          <p>O tratamento começa. Luzes percorrem o implante e os sinais vitais se estabilizam, um pulso de cada vez.</p>
-          <img src="../ASSETS/IMG/3- Mulher na maca.png" alt="A mulher recebendo tratamento">
-          <p>Pressione Enter para avançar.</p>
-          `;
         etapa = 31;
         break;
 
       case 31:
         tela.innerHTML = `
-            <p>Ao amanhecer, a mulher acorda, vocês deixam o hospital e seguem para sua casa. <br> No caminho ela diz que o implante causou o dano no seu leitor neural e por isso não pôde ler os arquivos.</p>
+            <p>Ao amanhecer, vocês deixam o hospital e seguem para sua casa.</p>
             <img src="../ASSETS/IMG/Fuga Neon de Manha.png" alt="A mulher recuperada no hospital">
             <p>Pressione Enter para avançar.</p>
             `;
@@ -103,7 +96,7 @@ function mostrarProximaTela() {
     case 0:
       popup.innerHTML = "";
       tela.innerHTML = `
-              <p>Um telefone descartável vibra sobre a mesa. Lá fora, o neon de Kabuki sangra na chuva. Uma chamada sem origem pisca no visor.</p>
+              <p>Um telefone vibra sobre a mesa. Uma chamada sem origem pisca no visor.</p>
               <img src="../ASSETS/IMG/1-Chamado Neon no Escritório Noir.png" alt="Telefone tocando num escritório iluminado por neon">
               <p>[0] Atender</p>
               `;
@@ -112,7 +105,7 @@ function mostrarProximaTela() {
 
     case 2:
       tela.innerHTML = `
-                <p>Uma mulher aterrorizada explica que encontrou informações privilegiadas num chip e precisa escapar. Ela marca um beco atrás do Clube Kabuki.</p>
+                <p>Uma mulher explica que encontrou um chip e precisa escapar. Ela marca uma coordenada e você pega um chip falso por via das dúvidas.</p>
                 <img src="../ASSETS/IMG/2-Chamada Anônima no Clube Kabuki.png" alt="Mulher numa chamada anônima">
                 <p>[1] Ir diretamente ao local<br>[2] Hackear e mapear o local antes de ir</p>
                 `;
@@ -120,32 +113,27 @@ function mostrarProximaTela() {
       break;
 
     case 4:
-      tela.innerHTML = `<p>Você acessou o terminal do seu computador:</p> <br>
+      bloqueiaEnterFinal = true
+      etapa = -5
+      tela.innerHTML = `<p>Você acessou o terminal do seu computador:</p>
                   <img src="../ASSETS/IMG/GIF/terminal_arasakaos.gif">`;
 
       setTimeout(() => {
-        tela.innerHTML = `<p>Você acessou o terminal do seu computador</p>
+        bloqueiaEnterFinal = false
+        tela.innerHTML = `<p>Você acessou o terminal do seu computador:</p>
                     <img src="../ASSETS/IMG/hack_loc.png">
                     [1] Ir preparado<br>[2] Ir logo`;
-      }, 15000);
+                  etapa = 5;
+      }, 5150);
 
-      etapa = 5;
       break;
 
     case 6:
-      if (hackeou) {
         tela.innerHTML = `
-            <p>Você chega ao beco mapeado. A mulher está caída no chão. Passos de guardas se aproximam.</p>
-            <img src="../ASSETS/IMG/Mulher no chão.jpg" alt="Mulher caída num beco neon">
-            <p>[1] Esconder-se dos guardas<br>[2] Examinar a mulher</p>
-          `;
-      } else {
-        tela.innerHTML = `
-            <p>Você vai direto ao beco. A mulher está caída no chão. Passos pesados se aproximam pela chuva.</p>
+            <p>A mulher está caída no chão. Passos pesados se aproximam pela chuva.</p>
             <img src="../ASSETS/IMG/Mulher no chão.jpg" alt="Mulher caída no chão do beco">
             <p>[1] Esconder-se dos guardas<br>[2] Examinar a mulher</p>
           `;
-      }
       etapa = 7;
       break;
 
@@ -169,7 +157,7 @@ function mostrarProximaTela() {
 
     case 12:
       tela.innerHTML = `
-          <p>Os guardas encontram o chip . A mulher parece estar viva.</p>
+          <p>Os guardas encontram o chip. A mulher parece estar viva.</p>
           <img src="../ASSETS/IMG/Guardas pegam o chip da mulher.png" alt="Guarda pegando o chip">
           <p>[1] Surpreendê-los e recuperar o chip<br>[2] Continuar escondido</p>
         `;
@@ -195,7 +183,7 @@ function mostrarProximaTela() {
 
     case 18:
       tela.innerHTML = `
-          <p>Você entrega o chip falso. O guarda começa a analisá-lo sem perceber a troca.</p>
+          <p>Você entrega o chip falso. O guarda começa a analisá-lo.</p>
           <img src="../ASSETS/IMG/1-Entrega do Chip na Chuva Neon.png" alt="Protagonista entregando um chip ao guarda">
           <p>[1] Fugir antes que percebam</p>
         `;
@@ -204,7 +192,7 @@ function mostrarProximaTela() {
 
     case 20:
       tela.innerHTML = `
-          <p>Você escapa enquanto os guardas analisam a cópia. O chip verdadeiro continua com você. Você corre antes que percebam. O que você faz agora?</p>
+          <p>Você corre antes que percebam. O que você faz agora?</p>
           <img src="../ASSETS/IMG/1- Aos Pés do Neon Kabuki.png" alt="Protagonista escapando por Kabuki">
           <p>[1] Ir para casa descobrir as informações do chip<br>[2] Levar a mulher ao hospital</p>
         `;
@@ -213,7 +201,7 @@ function mostrarProximaTela() {
 
     case 21:
       tela.innerHTML = `
-          <p>Os guardas estavam analisando o chip, você pegou os guardas de surpresa e derrubou eles</p>
+          <p>Os guardas estavam analisando o chip, você pegou os guardas de surpresa e derrubou eles.</p>
           <img src="../ASSETS/IMG/Tiroteio com Drones.png" alt="Protagonista escapando por Kabuki">
           <p>[1] Roubar o chip e ir para casa descobrir as informações do chip<br>[2] Pegar o chip e fugir com a mulher para salvar a vida dela</p>
           `;
@@ -244,7 +232,7 @@ function mostrarProximaTela() {
       comando.disabled = true;
 
       tela.innerHTML = `
-    <p>O programa abre em modo isolado. Uma senha protege os arquivos. Procure a pista fora do jogo.</p>
+    <p>O programa abre em modo isolado.</p>
     <img src="../ASSETS/IMG/GIF/descriptografia_chip.gif" alt="Programa esperando a senha do chip">
   `;
 
@@ -253,13 +241,25 @@ function mostrarProximaTela() {
       setTimeout(() => {
         bloqueiaEnterFinal = false;
         tela.innerHTML = `
-      <p>Uma senha protege os arquivos. Procure fora do jogo, abaixo de você há números. (Ex: xxxxxxxx)</p>
-      <img src="../ASSETS/IMG/senha_chip.png">
+      <p class="acerto">[Você tem 45s para responder] A senha possui 4 dígitos cuja soma é 20. (1º = dobro do 2º | 3º = 4º + 3 | 4º = 4). Qual é a senha?</p>
+      <img class="img-senha" src="../ASSETS/IMG/senha_chip.png">
     `;
         comando.classList.add("senha");
         comando.disabled = false;
         comando.focus();
-      }, 11000);
+
+        // O prazo começa assim que a imagem da senha aparece.
+        clearTimeout(timerSenha);
+        timerSenha = setTimeout(() => {
+          if (etapa !== "fim" || ganhou) return;
+
+          errosSenha = 2;
+          tempoSenhaEsgotado = true;
+          timerSenha = null;
+          etapa = 99;
+          mostrarProximaTela();
+        }, 45000);
+      }, 7300);
 
       etapa = "fim";
       break;
@@ -268,7 +268,7 @@ function mostrarProximaTela() {
       if (!ganhou) {
         comando.disabled = true;
         tela.innerHTML = `
-      <p class="erro">Suas ações resultaram na falha do sistema e consequentemente na sua morte!</p>
+      <p class="erro">${tempoSenhaEsgotado ? "Acabou seu tempo, você perdeu!" : "Suas ações resultaram na falha do sistema e consequentemente na sua morte!"}</p>
       `;
 
         setTimeout(() => {
@@ -303,7 +303,7 @@ function mostrarProximaTela() {
     <p>Pressione Enter para continuar.</p>`;
           etapa = 101;
         }, 3840);
-      }, 15500);
+      }, 9000);
       break;
 
     case 101:
@@ -419,7 +419,7 @@ document.addEventListener(
 comando.addEventListener("keydown", (event) => {
   if (event.key !== "Enter") return;
   event.preventDefault();
-  if (etapa >= 100 && etapa <= 107 && bloqueiaEnterFinal) {
+  if ((etapa === -5 || (etapa >= 100 && etapa <= 107)) && bloqueiaEnterFinal) {
     comando.value = "";
     return;
   }
@@ -532,7 +532,7 @@ comando.addEventListener("keydown", (event) => {
 
       case 15:
         tela.innerHTML = `
-          <p>Eles foram embora. O chip verdadeiro continua com você.</p>
+          <p>Eles já foram. O chip verdadeiro continua com você.</p>
           <img src="../ASSETS/IMG/1- Aos Pés do Neon Kabuki.png" alt="Protagonista passando pelos guardas sem ser visto">
           <p>[1] Ir para casa examinar o chip<br>[2] Levar a mulher ao hospital</p>
         `;
@@ -608,6 +608,8 @@ comando.addEventListener("keydown", (event) => {
 
       case "fim":
         if (escolha.toUpperCase() === senhaChip) {
+          clearTimeout(timerSenha);
+          timerSenha = null;
           etapa = 100;
           ganhou = true;
           mostrarProximaTela();
@@ -618,6 +620,8 @@ comando.addEventListener("keydown", (event) => {
           comando.classList.add("erroSenha");
 
           if (errosSenha >= 2) {
+            clearTimeout(timerSenha);
+            timerSenha = null;
             etapa = 99;
             mostrarProximaTela(); // Executa o case 99
           } else {
@@ -638,3 +642,7 @@ comando.addEventListener("keydown", (event) => {
     mostrarProximaTela();
   }
 });
+
+
+
+
