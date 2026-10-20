@@ -40,7 +40,7 @@ input {
 }
 
 .certo {
-  color: #006605;
+  color: #01eb0d;
 }
 
 .jogo {
@@ -114,4 +114,8 @@ input {
   to {
     --progresso-senha: 100%;
   }
+}
+
+#dica {
+  color: yellow;
 }
